@@ -50,7 +50,7 @@ def check_user_photo(update, context):
     user_photo = context.bot.getFile(update.message.photo[-1].file_id)
     file_name = os.path.join("downloads", f"{user_photo.file_id}.jpg")
     user_photo.download(file_name)
-    if has_object_on_image(file_name):
+    if has_object_on_image(file_name, 'cat'):
         update.message.reply_text("Обнаружен котик, добавляю в библиотеку")
         new_filename = os.path.join("images", f"cat_{user_photo.file_id}.jpg")
         os.rename(file_name, new_filename)
